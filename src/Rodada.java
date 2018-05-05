@@ -4,7 +4,10 @@ public class Rodada {
 
 	Jogador jogador2 = new Jogador();
 
+	String[] cartasDisponiveis = new String[] { "5H", "5C", "6S", "7S", "KD" };
+
 	private void distribuirCartas() {
+		jogador1.getCartas().add("5H");
 
 	}
 
