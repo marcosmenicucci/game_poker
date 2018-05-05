@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Jogador {
+	private String[] pesoCartas = { "2", "3", "4", "5", "6", "7", "8", "9", "1", "J", "Q", "K", "A" };
 
 	private String nome;
 
@@ -39,6 +40,17 @@ public class Jogador {
 		List<Contador> contadores = new ArrayList<>();
 		for (String carta : cartas) {
 			String numero = carta.substring(0, 1);
+
+			int pesoCarta = 0;
+			for (int i = 0; i < pesoCartas.length; i++) {
+				if (pesoCartas[i].equals(numero)) {
+					pesoCarta = i;
+					break;
+				}
+			}
+			if (pesoCarta > maiorCarta) {
+				maiorCarta = pesoCarta;
+			}
 
 			Contador achou = contadores.stream().filter(c -> c.identificador.equals(numero)).findFirst().orElse(null);
 			if (achou == null) {

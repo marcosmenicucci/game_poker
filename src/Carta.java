@@ -1,5 +1,6 @@
 
 public class Carta {
+
 	private String numero;
 
 	public Carta(String numero) {

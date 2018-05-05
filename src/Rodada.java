@@ -26,6 +26,12 @@ public class Rodada {
 		if (jogador1.getDuplas() < jogador2.getDuplas()) {
 			return jogador2;
 		}
+		if (jogador1.getMaiorCarta() > jogador2.getMaiorCarta()) {
+			return jogador1;
+		}
+		if (jogador1.getMaiorCarta() < jogador2.getMaiorCarta()) {
+			return jogador2;
+		}
 		return null;
 	}
 
