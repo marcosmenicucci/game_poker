@@ -5,7 +5,7 @@ public class Jogador {
 
 	private String nome;
 
-	List<String> cartas;
+	String[] cartas;
 
 	public String getNome() {
 		return nome;
@@ -15,11 +15,11 @@ public class Jogador {
 		this.nome = nome;
 	}
 
-	public List<String> getCartas() {
+	public String[] getCartas() {
 		return cartas;
 	}
 
-	public void setCartas(List<String> cartas) {
+	public void setCartas(String[] cartas) {
 		this.cartas = cartas;
 	}
 
@@ -40,11 +40,11 @@ public class Jogador {
 		for (String carta : cartas) {
 			String numero = carta.substring(0, 1);
 
-			int idx = contadores.indexOf(numero);
-			if (idx == -1) {
+			Contador achou = contadores.stream().filter(c -> c.identificador.equals(numero)).findFirst().orElse(null);
+			if (achou == null) {
 				contadores.add(new Contador(numero, 1));
 			} else {
-				contadores.get(idx).setQuantidade(contadores.get(idx).getQuantidade() + 1);
+				achou.setQuantidade(achou.getQuantidade() + 1);
 			}
 		}
 
@@ -61,6 +61,46 @@ public class Jogador {
 			this.fullHouse = 1;
 		}
 
+	}
+
+	public int getDuplas() {
+		return duplas;
+	}
+
+	public void setDuplas(int duplas) {
+		this.duplas = duplas;
+	}
+
+	public int getTrinca() {
+		return trinca;
+	}
+
+	public void setTrinca(int trinca) {
+		this.trinca = trinca;
+	}
+
+	public int getQuadrupla() {
+		return quadrupla;
+	}
+
+	public void setQuadrupla(int quadrupla) {
+		this.quadrupla = quadrupla;
+	}
+
+	public int getMaiorCarta() {
+		return maiorCarta;
+	}
+
+	public void setMaiorCarta(int maiorCarta) {
+		this.maiorCarta = maiorCarta;
+	}
+
+	public int getFullHouse() {
+		return fullHouse;
+	}
+
+	public void setFullHouse(int fullHouse) {
+		this.fullHouse = fullHouse;
 	}
 
 	class Contador {

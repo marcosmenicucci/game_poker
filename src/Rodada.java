@@ -4,16 +4,29 @@ public class Rodada {
 
 	Jogador jogador2 = new Jogador();
 
-	String[] cartasDisponiveis = new String[] { "5H", "5C", "6S", "7S", "KD" };
+	public Jogador validarRodada() {
+		jogador1.contarCartas();
+		jogador2.contarCartas();
 
-	private void distribuirCartas() {
-		jogador1.getCartas().add("5H");
-
-	}
-
-	public void validarRodada() {
-		System.out.println(jogador1.getCartas());
-		System.out.println(jogador1.getCartas());
+		if (jogador1.getFullHouse() > jogador2.getFullHouse()) {
+			return jogador1;
+		}
+		if (jogador1.getFullHouse() < jogador2.getFullHouse()) {
+			return jogador2;
+		}
+		if (jogador1.getTrinca() > jogador2.getTrinca()) {
+			return jogador1;
+		}
+		if (jogador1.getTrinca() < jogador2.getTrinca()) {
+			return jogador2;
+		}
+		if (jogador1.getDuplas() > jogador2.getDuplas()) {
+			return jogador1;
+		}
+		if (jogador1.getDuplas() < jogador2.getDuplas()) {
+			return jogador2;
+		}
+		return null;
 	}
 
 	public static void main(String[] args) {
@@ -21,4 +34,19 @@ public class Rodada {
 		rodada.validarRodada();
 	}
 
+	public Jogador getJogador1() {
+		return jogador1;
+	}
+
+	public void setJogador1(Jogador jogador1) {
+		this.jogador1 = jogador1;
+	}
+
+	public Jogador getJogador2() {
+		return jogador2;
+	}
+
+	public void setJogador2(Jogador jogador2) {
+		this.jogador2 = jogador2;
+	}
 }
